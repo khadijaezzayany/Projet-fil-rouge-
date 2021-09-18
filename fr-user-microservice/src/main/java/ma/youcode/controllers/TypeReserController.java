@@ -1,6 +1,7 @@
 package ma.youcode.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -65,6 +66,13 @@ public class TypeReserController {
 		TypeReser newType = typeReserService.updateTypereservation( typeReser);
 		return new ResponseEntity<>(newType, HttpStatus.ACCEPTED);
 
+	}
+	
+	
+	@GetMapping(path="/listAllType",produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public  ResponseEntity<List<TypeReser>> getAllType(){
+		List<TypeReser> typeResers = typeReserService.listTypereservation();
+		return new ResponseEntity<List<TypeReser>>(typeResers, HttpStatus.OK);
 	}
 
 }
