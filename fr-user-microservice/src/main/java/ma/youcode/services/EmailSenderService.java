@@ -1,4 +1,4 @@
-package ma.youcode.security.services;
+package ma.youcode.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

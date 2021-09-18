@@ -1,10 +1,11 @@
-package ma.youcode.security.services;
+package ma.youcode.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import ma.youcode.models.User;
+
 @Service
 public interface UserService {
 //	User createUser(User user);
@@ -12,6 +13,7 @@ public interface UserService {
 //	User getUser(String email);
 //
 	User getUserByUserId(String userId);
+
 //
 	User updateUser(String id, User userEntity);
 

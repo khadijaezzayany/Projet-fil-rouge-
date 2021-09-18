@@ -36,8 +36,8 @@ import ma.youcode.response.JwtResponse;
 import ma.youcode.response.MessageResponse;
 import ma.youcode.security.Utils;
 import ma.youcode.security.jwt.JwtUtils;
-import ma.youcode.security.services.EmailSenderService;
-import ma.youcode.security.services.UserDetailsImpl;
+import ma.youcode.services.EmailSenderService;
+import ma.youcode.services.UserDetailsImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

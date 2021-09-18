@@ -1,4 +1,4 @@
-package ma.youcode.security.servicesImp;
+package ma.youcode.servicesImp;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import ma.youcode.models.Reservation;
 import ma.youcode.models.User;
 import ma.youcode.repository.ReservationRepository;
-import ma.youcode.security.services.ReservationService;
+import ma.youcode.services.ReservationService;
 
 @Service
 public class ReservationServiceImp implements ReservationService {

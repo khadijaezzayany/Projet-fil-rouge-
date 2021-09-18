@@ -1,4 +1,4 @@
-package ma.youcode.security.services;
+package ma.youcode.services;
 
 import java.util.List;
 

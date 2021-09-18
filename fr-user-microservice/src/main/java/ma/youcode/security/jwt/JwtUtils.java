@@ -14,7 +14,7 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
-import ma.youcode.security.services.UserDetailsImpl;
+import ma.youcode.services.UserDetailsImpl;
 
 @Component
 public class JwtUtils {

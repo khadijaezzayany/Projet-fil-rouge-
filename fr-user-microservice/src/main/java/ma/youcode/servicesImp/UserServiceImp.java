@@ -1,7 +1,6 @@
-package ma.youcode.security.servicesImp;
+package ma.youcode.servicesImp;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 import ma.youcode.models.User;
 import ma.youcode.repository.UserRepository;
 import ma.youcode.security.Utils;
-import ma.youcode.security.services.UserService;
+import ma.youcode.services.UserService;
 
 @Service
 public class UserServiceImp implements UserService {

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ma.youcode.models.User;
 import ma.youcode.request.SignupRequest;
 import ma.youcode.response.UserResponse;
-import ma.youcode.security.servicesImp.UserServiceImp;
+import ma.youcode.servicesImp.UserServiceImp;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

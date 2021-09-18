@@ -1,4 +1,4 @@
-package ma.youcode.security.services;
+package ma.youcode.services;
 
 import java.util.List;
 
@@ -8,11 +8,12 @@ import ma.youcode.models.TypeReser;
 
 @Service
 public interface TypeReserService {
-	public void addTypereservation(TypeReser typeReser);
 
-	public void updateTypereservation(TypeReser typeReser);
+	TypeReser  addTypereservation(TypeReser typeReser);
 
-	public List<TypeReser> listTypereservation();
+	TypeReser updateTypereservation(Long id, TypeReser typeReser);
+
+	List<TypeReser> listTypereservation();
 
 	public TypeReser getTypereservationById(Long id);
 
