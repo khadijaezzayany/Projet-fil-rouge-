@@ -61,10 +61,10 @@ public class TypeReserController {
 	
 	
 
-	@PutMapping(path = "/updateTpye", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<TypeReser> update( @RequestBody TypeReser typeReser) {
-		TypeReser newType = typeReserService.updateTypereservation( typeReser);
-		return new ResponseEntity<>(newType, HttpStatus.ACCEPTED);
+	@PutMapping(path = "/updateType/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<TypeReser> update(@PathVariable Long id, @RequestBody TypeReser typeReser) {
+		TypeReser newType = typeReserService.updateTypereservation(id, typeReser);
+		return new ResponseEntity<TypeReser>(newType, HttpStatus.ACCEPTED);
 
 	}
 	

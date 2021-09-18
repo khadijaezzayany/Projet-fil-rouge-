@@ -11,7 +11,7 @@ public interface TypeReserService {
 
 	TypeReser  addTypereservation(TypeReser typeReser);
 
-	TypeReser updateTypereservation( TypeReser typeReser);
+	TypeReser updateTypereservation(Long id, TypeReser typeReser);
 
 	List<TypeReser> listTypereservation();
 
