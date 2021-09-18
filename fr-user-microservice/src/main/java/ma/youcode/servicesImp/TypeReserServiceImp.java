@@ -23,7 +23,8 @@ public class TypeReserServiceImp implements TypeReserService {
 
 	@Override
 	public TypeReser getTypereservationById(Long id) {
-		return typeReserRepository.getById(id);
+		return typeReserRepository.findTypeReserById(id);
+		
 	}
 
 	@Override
@@ -42,14 +43,20 @@ public class TypeReserServiceImp implements TypeReserService {
 		return typeReserRepository.findAll();
 	}
 
-	
-	
 	@Override
-	public TypeReser updateTypereservation(Long id, TypeReser typeReser) {
-		TypeReser typeReserModel = typeReserRepository.findTypeReserById(id);
-		typeReserRepository.save(typeReserModel);
-		return typeReserModel;
+	public TypeReser updateTypereservation(TypeReser typeReser) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	
+	
+//	@Override
+//	public TypeReser updateTypereservation( TypeReser typeReser) {
+//		TypeReser typeReserModel = typeReserRepository.findTypeReserById(id);
+//		typeReserRepository.save(typeReserModel);
+//		return typeReserModel;
+//	}
 
 
 

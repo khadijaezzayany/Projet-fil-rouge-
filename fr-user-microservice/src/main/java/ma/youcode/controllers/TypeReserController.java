@@ -34,41 +34,65 @@ public class TypeReserController {
 
 	}
 
-	@DeleteMapping(path = "delete/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	
+	
+
+	
+	@DeleteMapping(path = "/delete/{id}", produces = { MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<?> deleteType(@PathVariable("id") Long id) throws IOException {
 		System.out.println(id);
 		typeReserService.removeTypereservation(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-	@GetMapping(path ="find/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	
+	
+	
+	
+	@GetMapping(path = "/find/{id}")
 	public ResponseEntity<TypeReser> getType(@PathVariable("id") Long id) {
 		TypeReser type = typeReserService.getTypereservationById(id);
-		return new ResponseEntity<>(type, HttpStatus.OK);
+		return new ResponseEntity<TypeReser>(type, HttpStatus.OK);
 	}
 	
-	@PutMapping(path = "updateTpye",produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<TypeReser> update(@PathVariable Long id, @RequestBody TypeReser typeReser){
-		TypeReser newType = typeReserService.updateTypereservation(id, typeReser);
-		return new ResponseEntity<>(newType,HttpStatus.ACCEPTED);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
+	
+	
+
+	@PutMapping(path = "/updateTpye", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<TypeReser> update( @RequestBody TypeReser typeReser) {
+		TypeReser newType = typeReserService.updateTypereservation( typeReser);
+		return new ResponseEntity<>(newType, HttpStatus.ACCEPTED);
+
 	}
 
-}	
-		
-		
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
