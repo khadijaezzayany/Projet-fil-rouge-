@@ -42,7 +42,6 @@ public class TypeReserController {
 	@DeleteMapping(path = "/delete/{id}", produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<?> deleteType(@PathVariable("id") Long id) throws IOException {
-		System.out.println(id);
 		typeReserService.removeTypereservation(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

@@ -39,8 +39,8 @@ public class UserServiceImp implements UserService {
 		User userEntities = userRepository.findByUserId(userId);
 		if (userEntities == null)
 			throw new UsernameNotFoundException(userId);
-//		userEntities.setAdresse(userUp.getAdresse());
-//		userEntities.setContact(userUp.getContact());
+		userEntities.setPhone(userUp.getPhone());
+		
 
 		userRepository.save(userEntities);
 

@@ -1,24 +1,38 @@
 package ma.youcode.response;
 
-import java.util.Date;
-
 public class UserResponse {
 	private String userId;
 	private String username;
 	private String email;
 
-	private String contact;
+	private String firstName;
 
-	private String adresse;
+	private String lastName;
 
-	private Date time;
+	private int phone;
 
-	public Date getTime() {
-		return time;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setTime(Date time) {
-		this.time = time;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 
 	public String getUserId() {
@@ -43,22 +57,6 @@ public class UserResponse {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getContact() {
-		return contact;
-	}
-
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
-
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
 	}
 
 }
