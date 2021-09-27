@@ -36,7 +36,7 @@ public class UserController {
 	
 	
 	
-	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('STUDENT') or hasRole('ADMIN')")
 	@PutMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_XML_VALUE,
 					MediaType.APPLICATION_JSON_VALUE })
@@ -60,7 +60,7 @@ public class UserController {
 	
 	
 	
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping(produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public List<UserResponse> getAllUsers(@RequestParam(value = "page", defaultValue = "1") int page,
 			@RequestParam(value = "limit", defaultValue = "5") int limit) {
@@ -68,6 +68,7 @@ public class UserController {
 		List<User> users = userService.getUsers(page, limit);
 		for (User userFor : users) {
 			UserResponse user = new UserResponse();
+			//copy userFor in user
 			BeanUtils.copyProperties(userFor, user);
 			usersResponse.add(user);
 
@@ -82,7 +83,7 @@ public class UserController {
 	
 	
 	
-	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('STUDENT') or hasRole('ADMIN')")
 	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
 		User userEntity = userService.getUserByUserId(id);

@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// cors : pour communiquer deux application avec des domaines différence
+		// cors : pour communiquer deux application avec des domaines différence (EXMP: back_end & angular)
 		http.cors().and().csrf().disable()
 				// authenticationEntryPoint : will catch authentication error.
 				.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

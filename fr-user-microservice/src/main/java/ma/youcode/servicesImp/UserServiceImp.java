@@ -1,7 +1,9 @@
 package ma.youcode.servicesImp;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import ma.youcode.models.ERole;
+import ma.youcode.models.Role;
 import ma.youcode.models.User;
+import ma.youcode.repository.RoleRepository;
 import ma.youcode.repository.UserRepository;
 import ma.youcode.security.Utils;
 import ma.youcode.services.UserService;
@@ -20,6 +25,9 @@ import ma.youcode.services.UserService;
 public class UserServiceImp implements UserService {
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	RoleRepository roleRepository;
 //
 	@Autowired
 	Utils utils;
@@ -34,6 +42,21 @@ public class UserServiceImp implements UserService {
 	
 	
 	
+	public UserServiceImp(UserRepository userRepository2) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	@Override
 	public User updateUser(String userId, User userUp) {
 		User userEntities = userRepository.findByUserId(userId);
@@ -112,5 +135,23 @@ public class UserServiceImp implements UserService {
 		if (userEntities == null)
 			throw new UsernameNotFoundException(userId);
 		userRepository.delete(userEntities);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public User createUser(User user) {
+
+				user.setUserId(utils.genereteStringId(30));
+		return user;
 	}
 }

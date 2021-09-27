@@ -20,4 +20,6 @@ public interface UserService {
 	void deleteUser(String userId);
 
 	List<User> getUsers(int page, int limit);
+
+	public User createUser(User user);
 }

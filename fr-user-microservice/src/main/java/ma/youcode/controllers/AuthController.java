@@ -43,6 +43,8 @@ import ma.youcode.services.UserDetailsImpl;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+	static User user = new User();
+
 	@Autowired
 	AuthenticationManager authenticationManager;
 	
@@ -86,17 +88,16 @@ public class AuthController {
 		String jwt = jwtUtils.generateJwtToken(authentication);
 
 		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+		System.out.println(userDetails.getFirstName());
 		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
 		return ResponseEntity.ok(
-				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
+				new JwtResponse(jwt,userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles, userDetails.getUserId(),userDetails.getFirstName(),userDetails.getLastName(), userDetails.getPhone()));
 	
 		
 	}
 
-	
-	
 	
 	
 	
@@ -127,7 +128,7 @@ public class AuthController {
 		Set<Role> roles = new HashSet<>();
 
 		if (strRoles == null) {
-			Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+			Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			roles.add(userRole);
 		} else {
@@ -140,7 +141,7 @@ public class AuthController {
 
 					break;
 				default:
-					Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+					Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(userRole);
 				}
@@ -196,4 +197,89 @@ public class AuthController {
 			return "Sorry Your Account Does Not Activate";
 		}
 	}
+	
+//	
+//	@PostMapping("/signup")
+//	public ResponseEntity<?> registerUser( @RequestBody @Valid SignupRequest signUpRequest) throws Exception{
+//		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+//			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+//		}
+//
+//		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+//			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+//		}
+//		
+//		if(signUpRequest.getFirstName().isEmpty()) throw new UserException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
+//
+////		// Create new user's account
+//		User user = new User( signUpRequest.getUsername(),signUpRequest.getFirstName(),signUpRequest.getLastName(), signUpRequest.getEmail(),
+//				encoder.encode(signUpRequest.getPassword()),signUpRequest.getPhone());
+//
+//		Set<String> strRoles = signUpRequest.getRole();
+//		Set<Role> roles = new HashSet<>();
+//
+//		if (strRoles == null) {
+//			Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)
+//					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//			roles.add(userRole);
+//		} else {
+//			strRoles.forEach(role -> {
+//				switch (role) {
+//				case "admin":
+//					Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+//							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//					roles.add(adminRole);
+//
+//					break;
+//				default:
+//					Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)
+//							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//					roles.add(userRole);
+//				}
+//			});
+//		}
+//		user.setRoles(roles);
+//		user.setUserId(utils.genereteStringId(30));
+//
+//		userRepository.save(user);
+//
+//		ConfirmationToken confirmationToken = new ConfirmationToken(user);
+//		confirmationTokenRepository.save(confirmationToken);
+//		SimpleMailMessage mailMessage = new SimpleMailMessage();
+//		mailMessage.setTo(user.getEmail());
+//		mailMessage.setSubject("Complete Registration!");
+//		mailMessage.setFrom("chand312902@gmail.com");
+//		mailMessage.setText("To confirm your account, please click here : "
+//				+ "http://localhost:8088/api/auth/confirm-account?token=" + confirmationToken.getConfirmationToken());
+//		emailSenderService.sendEmail(mailMessage);
+//		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+//	}
+//
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	@RequestMapping(value = "/confirm-account", method = RequestMethod.GET)
+//	public String confirmUserAccount(@RequestParam("token") String confirmationToken) {
+//		ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+//
+//		if (token != null) {
+//			User user = userRepository.findByEmail(token.getUser().getEmail());
+//			user.setEnabled(true);
+//			userRepository.save(user);
+//			return "Congratulation Your Account Is Activated";
+//		} else {
+//			return "Sorry Your Account Does Not Activate";
+//		}
+//	}
 }

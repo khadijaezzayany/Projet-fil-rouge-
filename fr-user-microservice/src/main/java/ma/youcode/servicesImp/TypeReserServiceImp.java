@@ -9,6 +9,7 @@ import ma.youcode.models.TypeReser;
 import ma.youcode.repository.TypeReserRepository;
 import ma.youcode.services.TypeReserService;
 
+
 @Service
 public class TypeReserServiceImp implements TypeReserService {
 	
@@ -16,6 +17,10 @@ public class TypeReserServiceImp implements TypeReserService {
 	TypeReserRepository typeReserRepository;
 
 	
+	public TypeReserServiceImp(TypeReserRepository typeReserRepository2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public TypeReser addTypereservation(TypeReser typeReser) {
 		return typeReserRepository.save(typeReser);
@@ -30,7 +35,6 @@ public class TypeReserServiceImp implements TypeReserService {
 	@Override
 	public void removeTypereservation(Long id) {
 		TypeReser typeReser = typeReserRepository.getById(id);
-		System.out.println(typeReser.getId());
 		typeReserRepository.deleteById(typeReser.getId());	
 	}
 

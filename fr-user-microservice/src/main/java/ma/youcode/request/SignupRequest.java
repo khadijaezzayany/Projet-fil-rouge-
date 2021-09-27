@@ -4,31 +4,46 @@ import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 
 public class SignupRequest {
 	@NotBlank
-	@Size(min = 3, max = 20)
+//	@Size(min = 3, max = 20)
 	private String username;
 
 	@NotBlank
-	@Size(max = 50)
+//	@Size(max = 50)
 	@Email
 	private String email;
 
 	@NotBlank
-	@Size(min = 3, max = 20)
+//	@Size(min = 3, max = 20)
 	private String firstName;
-
-	@NotBlank
-	@Size(min = 3, max = 20)
+	
+	
+	@NotNull(message="Ce champ ne doit etre null !")
+//	@Size(min=3, message="Ce champ doit avoir au moins 3 Caracteres !")
 	private String lastName;
 
-	private Set<String> role;
+
 
 	@NotBlank
-	@Size(min = 10, max = 13)
+//	@Size(min = 10, max = 13)
 	private int phone;
+
+	
+
+	@NotBlank
+//	@Size(min = 6, max = 40)
+	private String password;
+
+	private String userId;
+
+	private boolean isEnabled;
+	
+	private Set<String> role;
 
 	public int getPhone() {
 		return phone;
@@ -54,34 +69,6 @@ public class SignupRequest {
 		this.lastName = lastName;
 	}
 
-	@NotBlank
-	@Size(min = 6, max = 40)
-	private String password;
-
-//	private String adresse;
-
-//	private String contact;
-
-//	private Date time;
-	private String userId;
-
-	private boolean isEnabled;
-
-//	public String getAdresse() {
-//		return adresse;
-//	}
-
-//	public String getContact() {
-//		return contact;
-//	}
-
-//	public void setContact(String contact) {
-//		this.contact = contact;
-//	}
-
-//	public void setAdresse(String adresse) {
-//		this.adresse = adresse;
-//	}
 
 	public String getUsername() {
 		return username;

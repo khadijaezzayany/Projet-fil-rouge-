@@ -1,5 +1,7 @@
 package ma.youcode.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,8 +25,8 @@ public class Reservation {
 	private User user;
 
 	@Column(nullable = false, name = "dateReservation")
-	private String dateRes;
-	private boolean confirmation;
+	private Date dateRes;
+	private boolean confirmation = false;
 
 	@OneToOne
 	@JoinColumn(name = "id_typeReservation")
@@ -34,7 +36,7 @@ public class Reservation {
 		super();
 	}
 
-	public Reservation(User user, String dateRes, boolean confirmation, TypeReser typeRes) {
+	public Reservation(User user, Date dateRes, boolean confirmation, TypeReser typeRes) {
 		super();
 		this.user = user;
 		this.dateRes = dateRes;
@@ -58,11 +60,11 @@ public class Reservation {
 		this.user = user;
 	}
 
-	public String getDateRes() {
+	public Date getDateRes() {
 		return dateRes;
 	}
 
-	public void setDateRes(String dateRes) {
+	public void setDateRes(Date dateRes) {
 		this.dateRes = dateRes;
 	}
 
