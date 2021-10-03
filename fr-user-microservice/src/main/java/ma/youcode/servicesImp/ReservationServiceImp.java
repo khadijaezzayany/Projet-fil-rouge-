@@ -4,10 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import javassist.expr.NewArray;
 import ma.youcode.models.Reservation;
 import ma.youcode.models.TypeReser;
 import ma.youcode.models.User;
@@ -19,122 +17,66 @@ import ma.youcode.services.ReservationService;
 @Service
 public class ReservationServiceImp implements ReservationService {
 
-
 	@Autowired
 	ReservationRepository reservationRepository;
 	@Autowired
 	UserRepository userRepository;
-	
-	
+
 	@Autowired
 	TypeReserRepository typeReserRepository;
-	
-	
-	
-	
-	
-	
-	
-	@Override
-	public List<Reservation> getReservationByUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@Override
-	public List<Reservation> getReservations(int page, int limit) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public List<Reservation>  getReservationByUser(String id) {
+		User user = userRepository.findByUserId(id);
+		List<Reservation> reservation = (List<Reservation>) reservationRepository.getReservationByUser(user);
+		return reservation;
 
-	@Override
-	public Reservation updateReservation(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	@Override
-	public void deleteReservation(long id) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
-	public Reservation createReservation(Reservation reservation, String id, Long idType ) {
+	public Reservation createReservation(Reservation reservation, String id, Long idType) {
 
 		User user = userRepository.findByUserId(id);
 		TypeReser typeReser = typeReserRepository.findTypeReserById(idType);
 
-		if(user.equals(null) || typeReser.equals(null))
-		{
+		if (user.equals(null) || typeReser.equals(null)) {
 			return null;
-		}
-		else {
+		} else {
 			reservation.setUser(user);
+			reservation.setDateRes(new Date());
 			reservation.setTypeRes(typeReser);
 			reservationRepository.save(reservation);
 			return reservation;
 
-			
 		}
-		
-		
-		
-		
+
 	}
 	
 	
 	
 	
+	@Override
+	public Reservation updateReservation( Reservation reservation,Long id,Long idType) {
+		TypeReser typeReser = typeReserRepository.findTypeReserById(idType);
+		Reservation reservation2 = reservationRepository.findReservationById(id);
+
+		if (typeReser.equals(null)) {
+			return null;
+		} else {
+			
+
+			reservation2.setTypeRes(reservation.getTypeRes());
+			reservationRepository.save(reservation2);
+
+			
+			return reservation2;
+
+		}
+
+	}
+
 	
 	
 	
@@ -143,8 +85,26 @@ public class ReservationServiceImp implements ReservationService {
 	
 	
 	
-	
-	
-	
+	@Override
+	public List<Reservation> getReservations() {
+		return reservationRepository.findAll();
+	}
+
+	@Override
+	public void deleteReservation(long id) {
+		Reservation reservation = reservationRepository.getById(id);
+		reservationRepository.delete(reservation);
+
+	}
+
+
+
+	@Override
+	public Reservation getReservationById(Long id) {
+		Reservation reservation = reservationRepository.findReservationById(id);
+		return reservation;
+	}
+
+
 
 }

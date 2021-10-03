@@ -39,6 +39,8 @@ public class TypeReserController {
 
 	
 	
+	
+	
 
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -53,11 +55,35 @@ public class TypeReserController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping(path = "/find/{id}")
 	public ResponseEntity<TypeReser> getType(@PathVariable("id") Long id) {
 		TypeReser type = typeReserService.getTypereservationById(id);
 		return new ResponseEntity<TypeReser>(type, HttpStatus.OK);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -70,6 +96,17 @@ public class TypeReserController {
 		return new ResponseEntity<TypeReser>(newType, HttpStatus.ACCEPTED);
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping(path="/listAllType",produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
