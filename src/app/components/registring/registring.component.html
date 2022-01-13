@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+
+<head>
+    <base href="../../../../">
+    <meta charset="utf-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="@@page-discription">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+    <!-- Page Title  -->
+    <title>Regestring | DashLite Admin Template</title>
+    <!-- StyleSheets  -->
+   <!--  <link rel="stylesheet" href="./assets/css/dashlite.css?ver=1.4.0">
+    <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=1.4.0"> -->
+</head>
+
+<body class="nk-body npc-crypto ui-clean pg-auth">
+    <!-- app body @s -->
+    <div class="nk-app-root">
+        <div class="nk-split nk-split-page nk-split-md">
+            <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container">
+                <div class="absolute-top-right d-lg-none p-3 p-sm-5">
+                    <a href="#" class="toggle btn-white btn btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
+                </div>
+                <div class="nk-block nk-block-middle nk-auth-body">
+                    <div class="brand-logo pb-5">
+                        <a href="html/general/index.html" class="logo-link">
+                            <img class="logo-light logo-img logo-img-lg" src="../../../assets/images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
+                            <img class="logo-dark logo-img logo-img-lg" src="../../../assets/images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                        </a>
+                    </div>
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <h5 class="nk-block-title">Sign-Up</h5>
+                           
+                        </div>
+                    </div><!-- .nk-block-head -->
+                    <form [formGroup]= "registrForm" (ngSubmit)="login()">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="default-01">Username</label>
+                            </div>
+                            <input formControlName="username" type="text" class="form-control form-control-lg" id="default-01" placeholder="Enter your username">
+                            <div *ngIf="registrFormm.username.invalid && (registrFormm.username.touched) || registrFormm.username.dirty" style="color: red;">
+                                <div *ngIf="registrFormm.username.getError('required')">This field is Required</div>
+                                <div *ngIf="registrFormm.username.getError('minlength')">This field should be 3 caracters</div>
+                                <div *ngIf="registrFormm.username.getError('maxlength')">This field should be 25 caracters</div>
+                            </div>
+                        </div><!-- .foem-group -->
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="default-01">Firstname</label>
+                            </div>
+                            <input formControlName="firstname" type="text" class="form-control form-control-lg" id="default-01" placeholder="Enter your firstname">
+                            <div *ngIf="registrFormm.firstname.invalid && (registrFormm.firstname.touched) || registrFormm.firstname.dirty" style="color: red;">
+                                <div *ngIf="registrFormm.firstname.getError('required')">This field is Required</div>
+                                <div *ngIf="registrFormm.firstname.getError('minlength')">This field should be 3 caracters</div>
+                                <div *ngIf="registrFormm.firstname.getError('maxlength')">This field should be 25 caracters</div>
+                            </div>
+                        </div><!-- .foem-group -->   <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="default-01">Lastname</label>
+                            </div>
+                            <input formControlName="lastname" type="text" class="form-control form-control-lg" id="default-01" placeholder="Enter your lastname">
+                            <div *ngIf="registrFormm.lastname.invalid && (registrFormm.lastname.touched) || registrFormm.lastname.dirty" style="color: red;">
+                                <div *ngIf="registrFormm.lastname.getError('required')">This field is Required</div>
+                                <div *ngIf="registrFormm.lastname.getError('minlength')">This field should be 3 caracters</div>
+                                <div *ngIf="registrFormm.lastname.getError('maxlength')">This field should be 25 caracters</div>
+                            </div>
+                        </div><!-- .foem-group -->   <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="default-01">Email</label>
+                            </div>
+                            <input formControlName="email" type="email"  ngModel email="true"class="form-control form-control-lg" id="default-01" placeholder="Enter your email">
+                            <div *ngIf="registrFormm.email.invalid && (registrFormm.email.touched) || registrFormm.email.dirty" style="color: red;">
+                                <div *ngIf="registrFormm.email.getError('required')">This field is Required</div>
+                                <div *ngIf="registrFormm.email.getError('email')">This field should be Email</div>
+                                
+                            </div>
+                        </div><!-- .foem-group -->   <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="default-01">Phone</label>
+                            </div>
+                            <input formControlName="phone" type="text" class="form-control form-control-lg" id="default-01" placeholder="Enter your phone">
+                            <div *ngIf="registrFormm.phone.invalid && (registrFormm.phone.touched) || registrFormm.phone.dirty" style="color: red;">
+                                <div *ngIf="registrFormm.phone.getError('required')">This field is Required</div>
+                                <div *ngIf="registrFormm.phone.getError('pattern')">Please, Enter 10 digit Mobile Number.</div>
+                            </div>
+                        </div><!-- .foem-group -->
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="password">Password</label>
+                            </div>
+                            <div class="form-control-wrap">
+                                <a tabindex="-1" href="#" class="form-icon form-icon-right passcoe-switch" data-target="password">
+                                    <em class="passcode-icon icon-show icon ni ni-eye"></em>
+                                    <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
+                                </a>
+                                <input formControlName="password" type="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode">
+                                <div *ngIf="registrFormm.password.invalid && (registrFormm.password.touched) || registrFormm.password.dirty" style="color: red;">
+                                    <div *ngIf="registrFormm.password.getError('required')">This field is Required</div>
+                                    <div *ngIf="registrFormm.password.getError('minlength')">This field should be 5 caracters</div>
+                                    <div *ngIf="registrFormm.password.getError('maxlength')">This field should be 25 caracters</div>
+
+                                </div>
+                            </div>
+                        </div><!-- .foem-group -->
+                        <div class="form-group">
+                            <button  class="btn btn-lg btn-primary btn-block">Sign in</button>
+                        </div>
+                    </form><!-- form -->
+                    <div class="form-note-s2 pt-4"> <a routerLink="/login">Aready have an account</a>
+                    </div>
+                   
+                    
+                    
+                </div><!-- .nk-block -->
+     
+            </div><!-- .nk-split-content -->
+            <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
+                <div class="slider-wrap w-100 w-max-550px p-3 p-sm-5 m-auto">
+                    <div class="slider-init" data-slick='{"dots":true, "arrows":false}'>
+                        <div class="slider-item">
+                            <div class="nk-feature nk-feature-center">
+                                <div class="nk-feature-img">
+                                    <img class="round" src="../../../assets/images/slides/promo-a.png" srcset="../../../assets/images/slides/promo-a2x.png 2x" alt="">
+                                </div>
+                                <div class="nk-feature-content py-4 p-sm-5">
+                                    <h4>Dashlite</h4>
+                                    <p>You can start to create your products easily with its user-friendly design & most completed responsive layout.</p>
+                                </div>
+                            </div>
+                        </div><!-- .slider-item -->
+                       
+               
+                    </div><!-- .slider-init -->
+                    <div class="slider-dots"></div>
+                    <div class="slider-arrows"></div>
+                </div><!-- .slider-wrap -->
+            </div><!-- .nk-split-content -->
+        </div><!-- .nk-split -->
+    </div><!-- app body @e -->
+    <!-- JavaScript -->
+    <script src="../../../assets/js/bundle.js?ver=1.4.0"></script>
+    <script src="../../../assets/js/scripts.js?ver=1.4.0"></script>
+</body>
+
+</html>
